@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="header.jsp"%>
-<%@page import="com.luoxianming.model.User" %>
+<%@page import="com.YuShiqi.model.User" %>
 <h1 align="center">User List</h1>
 <%
     User user = (User) request.getAttribute("user");
