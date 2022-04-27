@@ -34,6 +34,33 @@
         <welcome-file>home</welcome-file>
     </welcome-file-list>
 
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.YuShiqi.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/hello-selvet</url-pattern>
+    </filter-mapping>
+    <!--2nd-->
+    <filter>
+        <filter-name>HelloFilter</filter-name>
+        <filter-class>com.YuShiqi.filter.HelloFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HelloFilter</filter-name>
+        <url-pattern>/hello-selvet</url-pattern>
+    </filter-mapping>
+    <!--3rd-->
+    <filter>
+        <filter-name>LoggerFilter</filter-name>
+        <filter-class>com.YuShiqi.filter.LoggerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoggerFilter</filter-name>
+        <url-pattern>/hello-selvet</url-pattern>
+    </filter-mapping>
+
 
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
