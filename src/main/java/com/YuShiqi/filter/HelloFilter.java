@@ -13,7 +13,7 @@ import java.io.IOException;
 //test 3 url /home,/login,/register.jsp is for these 3 selvet or jsp page
 public class HelloFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
-        System.out.println("I am in HelloFilter-->init()");//when start tomcat
+        //System.out.println("I am in HelloFilter-->init()");//when start tomcat
     }
 
     public void destroy() {
