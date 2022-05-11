@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="2020211001001216YuShiqi:war exploded">
-    <output-path>$PROJECT_DIR$/target/LuoXianming2020211001001322-1.0-SNAPSHOT</output-path>
+    <output-path>$PROJECT_DIR$/target/YuShiqi2020211001001216-1.0-SNAPSHOT</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
-        <module>2020211001001322LuoXianming</module>
+        <module>2020211001001216YuShiqi</module>
         <packaging>war</packaging>
       </options>
     </properties>
@@ -21,7 +21,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/YuShiqi2020211001001216-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="2020211001001322LuoXianming/web/Web" />
+      <element id="javaee-facet-resources" facet="2020211001001216YuShiqi/web/Web" />
     </root>
   </artifact>
 </component>
