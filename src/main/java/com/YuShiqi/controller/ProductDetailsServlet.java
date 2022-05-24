@@ -1,6 +1,7 @@
 package com.YuShiqi.controller;
 
 import com.YuShiqi.dao.ProductDao;
+import com.YuShiqi.model.Category;
 import com.YuShiqi.model.Product;
 
 import javax.servlet.*;
@@ -11,8 +12,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "ProductListServlet", value = "/admin/productList")
-public class ProductListServlet extends HttpServlet {
+@WebServlet(name = "ProductDetailsServlet", value = "/productDetails")
+public class ProductDetailsServlet extends HttpServlet {
+
     Connection con = null;
 
     @Override
@@ -23,15 +25,21 @@ public class ProductListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ProductDao productDao = new ProductDao();
-        List<Product> productList = null;
-        try {
-            productList = productDao.findAll(con);
-        }catch (SQLException e){
-            e.printStackTrace();
+        List<Category> categoryList = Category.findAllCategory(con);
+        request.setAttribute("categoryList",categoryList);
+        //get product by id
+        if (request.getParameter("id")!=null){
+            int productId = Integer.parseInt(request.getParameter("id"));
+            ProductDao productDao = new ProductDao();
+            try {
+                Product product = productDao.findById(productId,con);
+                request.setAttribute("p",product);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        request.setAttribute("productList",productList);
-        String path = "/WEB-INF/views/admin/productList.jsp";
+        //forward
+        String path = "/WEB-INF/views/productDetails.jsp";
         request.getRequestDispatcher(path).forward(request,response);
     }
 

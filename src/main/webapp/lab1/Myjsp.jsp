@@ -4,7 +4,6 @@
     <title></title>
 </head>
 <body>
-<!-- /2020211001001322LuoXianming_war_exploded/my -->
 <form method="post" action="Mydearjsp.jsp">
     Name:<input name="name" type="text" size="20"><br>
     Class:<input name="classname" type="text" size="20"><br>

@@ -3,10 +3,7 @@ package com.YuShiqi.dao;
 import com.YuShiqi.model.Product;
 
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,7 +75,7 @@ public class ProductDao implements  IProductDao{
             product.setProductId(rs.getInt("ProductId"));
             product.setProductName(rs.getString("ProductName"));
             product.setProductDescription(rs.getString("ProductDescription"));
-            product.setPicture(rs.getBinaryStream("Picture"));
+            //product.setPicture(rs.getBinaryStream("Picture"));
             product.setPrice(rs.getDouble("Price"));
             product.setCategoryId(rs.getInt("CategoryId"));
         }
@@ -100,7 +97,7 @@ public class ProductDao implements  IProductDao{
             product.setProductId(rs.getInt("ProductId"));
             product.setProductName(rs.getString("ProductName"));
             product.setProductDescription(rs.getString("ProductDescription"));
-            product.setPicture(rs.getBinaryStream("Picture"));
+            //product.setPicture(rs.getBinaryStream("Picture"));
             product.setPrice(rs.getDouble("Price"));
             product.setCategoryId(rs.getInt("CategoryId"));
             productList.add(product);
@@ -113,13 +110,48 @@ public class ProductDao implements  IProductDao{
 
     @Override
     public List<Product> findByPrice(double minPrice, double maxPrice, Connection con) throws SQLException {
-        return null;
+        List<Product> productList = new ArrayList<Product>();
+        String sql = "SELECT ProductId,ProductName,ProductDescription,Picture,Price,CategoryId FROM Product WHERE Price BETWEEN ? AND ?;";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setDouble(1,minPrice);
+        ps.setDouble(2,maxPrice);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()){
+            Product product = new Product();
+            product.setProductId(rs.getInt("ProductId"));
+            product.setProductName(rs.getString("ProductName"));
+            product.setProductDescription(rs.getString("ProductDescription"));
+            product.setPicture(rs.getBinaryStream("Picture"));
+            product.setPrice(rs.getDouble("Price"));
+            product.setCategoryId(rs.getInt("CategoryId"));
+            productList.add(product);
+        }
+        if (productList.isEmpty()){
+            return null;
+        }
+        return productList;
     }
 
     @Override
     public List<Product> findAll(Connection con) throws SQLException {
-
-        return null;
+        List<Product> productList = new ArrayList<Product>();
+        String sql = "SELECT ProductId,ProductName,ProductDescription,Picture,Price,CategoryId FROM Product";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()){
+            Product product = new Product();
+            product.setProductId(rs.getInt("ProductId"));
+            product.setProductName(rs.getString("ProductName"));
+            product.setProductDescription(rs.getString("ProductDescription"));
+            //product.setPicture(rs.getBinaryStream("Picture"));
+            product.setPrice(rs.getDouble("Price"));
+            product.setCategoryId(rs.getInt("CategoryId"));
+            productList.add(product);
+        }
+        if (productList.isEmpty()){
+            return null;
+        }
+        return productList;
     }
 
     @Override
@@ -130,5 +162,18 @@ public class ProductDao implements  IProductDao{
     @Override
     public List<Product> getPicture(Integer productId, Connection con) throws SQLException {
         return null;
+    }
+
+    public byte[] getPictureById(Integer productId,Connection con) throws SQLException{
+        byte[] imgByte = null;
+        String sql = "SELECT Picture FROM Product WHERE ProductId=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1,productId);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()){
+            Blob blob = rs.getBlob("Picture");
+            imgByte = blob.getBytes(1,(int)blob.length());
+        }
+        return imgByte;
     }
 }

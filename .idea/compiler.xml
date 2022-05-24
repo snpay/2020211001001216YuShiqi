@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="2020211001001216YuShiqi" />
+        <module name="YuShiqi2020211001001216" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="2020211001001216YuShiqi" target="1.8" />
+      <module name="YuShiqi2020211001001216" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

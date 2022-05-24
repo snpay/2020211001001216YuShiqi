@@ -16,12 +16,13 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: javax.servlet:jsp-api:2.0" />
           <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.4" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/YuShiqi2020211001001216-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/LuoXianming2020211001001322-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="2020211001001216YuShiqi/web/Web" />
+      <element id="javaee-facet-resources" facet="2020211001001322LuoXianming/web/Web" />
     </root>
   </artifact>
 </component>
