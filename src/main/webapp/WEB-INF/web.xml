@@ -60,7 +60,22 @@
         <filter-name>LoggerFilter</filter-name>
         <url-pattern>/hello-selvet</url-pattern>
     </filter-mapping>
-
+    <filter>
+        <filter-name>YourNameFilter</filter-name>
+        <filter-class>com.YuShiqi.lab2.YourNameFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>YourNameFilter</filter-name>
+        <url-pattern>/lab2/validate.jsp</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.YuShiqi.lab2.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/lab2/validate.jsp</url-pattern>
+    </filter-mapping>
 
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
